@@ -1,0 +1,9 @@
+export const START_CREATE_CLIENT = "INIT_CREATE_CLIENT";
+export const SUCCESS_CREATE_CLIENT = "SUCCESS_CREATE_CLIENT";
+export const FAIL_CREATE_CLIENT = "FAIL_CREATE_CLIENT";
+
+//Login 
+export const AUTH_START = "AUTH_START";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
