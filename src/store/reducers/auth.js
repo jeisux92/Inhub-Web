@@ -20,7 +20,10 @@ const reducer = (state = initialState, action) => {
         case AUTH_START:
             return state;
         case AUTH_SUCCESS:
-            return state;
+            return {
+                ...state,
+                token: action.token
+            };
         case AUTH_FAIL:
             return state;
         case AUTH_LOGOUT:

@@ -12,7 +12,7 @@ import LoginPage from "views/Pages/LoginPage";
 
 const useStyles = makeStyles(styles);
 
-export default function Pages() {
+export default function Pages(props) {
   // styles
   const classes = useStyles();
 
@@ -20,7 +20,7 @@ export default function Pages() {
     <div>
       <div className={classes.wrapper}>
         <div className={classes.fullPage}>
-          <LoginPage />
+          <LoginPage {...props}/>
           <Footer white />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,12 +18,18 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
-
+import { connect } from "react-redux";
 import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle.js";
+
+
+//Router
+
+import { Redirect } from "react-router-dom";
+import { auth, authCheckState } from "../../store/actions/auth"
 
 const useStyles = makeStyles(styles);
 
-
+// actions
 // Input utilities
 //import {  updateObject } from "../../shared/utility";
 
@@ -47,14 +53,16 @@ export const updateObject = (oldObject, updateProperties) => ({
   ...updateProperties
 })
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+  useEffect(() => {
 
-  // Animation
-  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  setTimeout(function () {
-    setCardAnimation("");
-  }, 700);
+    props.onCheckAuth();
+
+
+  }, [])
+
   const classes = useStyles();
+
   const [form, setForm] = useState({
     user: {
       formControlProps: {
@@ -100,6 +108,7 @@ const LoginPage = () => {
       isTouched: false
     }
   });
+
   const [formValid, setFormValid] = useState(false);
 
 
@@ -124,14 +133,18 @@ const LoginPage = () => {
   }
   const submitHandler = (e) => {
     e.preventDefault();
-    alert("I'm Submit");
+    props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
+  }
+
+  if (props.isAuthenticated) {
+    return <Redirect to="/admin" />
   }
   return (
     <div className={classes.container}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
           <form onSubmit={submitHandler}>
-            <Card login className={classes[cardAnimaton]}>
+            <Card login >
               <CardHeader
                 className={`${classes.cardHeader} ${classes.textCenter}`}
                 color="primary"
@@ -184,7 +197,14 @@ const LoginPage = () => {
   );
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.token != null
+})
+
+const mapDispatchToProps = dispatch => ({
+  onAuth: (user, password) => dispatch(auth(user, password)),
+  onCheckAuth: () => dispatch(authCheckState())
+})
 
 
-
-export default LoginPage;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
