@@ -23,6 +23,30 @@ import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle
 
 const useStyles = makeStyles(styles);
 
+
+// Input utilities
+//import {  updateObject } from "../../shared/utility";
+
+
+export const validateForm = (value, rules) => {
+  let isValid = true;
+
+  if (rules.maxLenght <= value.length) {
+    isValid = false;
+  }
+
+  if (rules.minLenght >= value.length) {
+    isValid = false;
+  }
+
+
+  return isValid;
+}
+export const updateObject = (oldObject, updateProperties) => ({
+  ...oldObject,
+  ...updateProperties
+})
+
 const LoginPage = () => {
 
   // Animation
@@ -31,46 +55,72 @@ const LoginPage = () => {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
-  const [form, setForm] = useState(
-    {
-      user: {
-        formControlProps: {
-          fullWidth: true
-        },
-        inputProps: {
-          value: "",
-          endAdornment: (
-            <InputAdornment position="end">
-              <Email className={classes.inputAdornmentIcon} />
-            </InputAdornment>
-          )
-        },
-        labelText: "Email..."
+  const [form, setForm] = useState({
+    user: {
+      formControlProps: {
+        fullWidth: true
       },
-      password: {
-        labelText: "Password",
-        formControlProps: {
-          fullWidth: true
-        },
-        inputProps: {
-          endAdornment: (
-            <InputAdornment position="end">
-              <Icon className={classes.inputAdornmentIcon}>
-                lock_outline
+      inputProps: {
+        value: "",
+        endAdornment: (
+          <InputAdornment position="end">
+            <Email className={classes.inputAdornmentIcon} />
+          </InputAdornment>
+        )
+      },
+      labelText: "Email...",
+      rules: {
+        maxLenght: 15,
+        minLenght: 10
+      },
+      isValid: false,
+      isTouched: false
+    },
+    password: {
+      labelText: "Password",
+      formControlProps: {
+        fullWidth: true
+      },
+      inputProps: {
+        value: "",
+        endAdornment: (
+          <InputAdornment position="end">
+            <Icon className={classes.inputAdornmentIcon}>
+              lock_outline
                         </Icon>
-            </InputAdornment>
-          ),
-          type: "password",
-          autoComplete: "off",
-        }
-      }
+          </InputAdornment>
+        ),
+        type: "password",
+        autoComplete: "off",
+      },
+      rules: {
+        maxLenght: 10
+      },
+      isValid: false,
+      isTouched: false
     }
-  );
+  });
+  const [formValid, setFormValid] = useState(false);
 
 
+  const inputChanged = (controlName, e) => {
+    const updatedControls = updateObject(form, {
+      [controlName]: updateObject(form[controlName], {
+        inputProps: updateObject(form[controlName].inputProps,
+          {
+            value: e.target.value
+          }),
+        isValid: validateForm(e.target.value, form[controlName].rules),
+        isTouched: true
+      })
+    });
+    let formIsValid = true;
+    for (const control in updatedControls) {
+      formIsValid = formIsValid && updatedControls[control].isValid;
+    }
 
-  const inputChanged = (control, e) => {
-    debugger
+    setForm(updatedControls);
+    setFormValid(formIsValid);
   }
 
   return (
@@ -107,13 +157,17 @@ const LoginPage = () => {
                 {Object.keys(form).map(control => {
                   const inputProps = { ...form[control].inputProps, onChange: inputChanged.bind(this, control) }
                   return (
-                    <CustomInput key={control}
-                      labelText={form[control].labelText}
-                      formControlProps={form[control].formControlProps}
-                      inputProps={inputProps}
-                    />
+                    <div key={control}>
+                      <CustomInput
+                        labelText={form[control].labelText}
+                        formControlProps={form[control].formControlProps}
+                        inputProps={inputProps}
+                      />
+                      <h5>{form[control].isValid ? "valid" : "invalid"}</h5>
+                    </div>
                   )
                 })}
+                {formValid ? "FormValid" : "Form Invalid"}
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
                 <Button color="rose" simple size="lg" block>
