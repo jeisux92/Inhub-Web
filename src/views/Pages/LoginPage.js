@@ -122,16 +122,19 @@ const LoginPage = () => {
     setForm(updatedControls);
     setFormValid(formIsValid);
   }
-
+  const submitHandler = (e) => {
+    e.preventDefault();
+    alert("I'm Submit");
+  }
   return (
     <div className={classes.container}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
-          <form>
+          <form onSubmit={submitHandler}>
             <Card login className={classes[cardAnimaton]}>
               <CardHeader
                 className={`${classes.cardHeader} ${classes.textCenter}`}
-                color="rose"
+                color="primary"
               >
                 <h4 className={classes.cardTitle}>Log in</h4>
                 <div className={classes.socialLine}>
@@ -154,6 +157,7 @@ const LoginPage = () => {
                 </div>
               </CardHeader>
               <CardBody>
+
                 {Object.keys(form).map(control => {
                   const inputProps = { ...form[control].inputProps, onChange: inputChanged.bind(this, control) }
                   return (
@@ -163,14 +167,12 @@ const LoginPage = () => {
                         formControlProps={form[control].formControlProps}
                         inputProps={inputProps}
                       />
-                      <h5>{form[control].isValid ? "valid" : "invalid"}</h5>
                     </div>
                   )
                 })}
-                {formValid ? "FormValid" : "Form Invalid"}
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
-                <Button color="rose" simple size="lg" block>
+                <Button type="submit" color="primary" simple size="lg" block disabled={!formValid} >
                   Iniciar sesión
                 </Button>
               </CardFooter>
