@@ -380,7 +380,7 @@ const sidebarStyle = theme => ({
   caretActive: {
     transform: "rotate(180deg)"
   },
-  purple: {
+  primary: {
     "&,&:hover,&:focus": {
       color: whiteColor,
       backgroundColor: primaryColor[0],
@@ -415,6 +415,8 @@ const sidebarStyle = theme => ({
         ",.2)"
     }
   },
+
+  
   orange: {
     "&,&:hover,&:focus": {
       color: whiteColor,

@@ -20,8 +20,6 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import { connect } from "react-redux";
 import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle.js";
-
-
 //Router
 
 import { Redirect } from "react-router-dom";
@@ -58,7 +56,7 @@ const LoginPage = (props) => {
 
     props.onCheckAuth();
 
-
+    return () => { }
   }, [])
 
   const classes = useStyles();
@@ -82,7 +80,8 @@ const LoginPage = (props) => {
         minLenght: 10
       },
       isValid: false,
-      isTouched: false
+      isTouched: false,
+      isFocused: false
     },
     password: {
       labelText: "Password",
@@ -95,7 +94,7 @@ const LoginPage = (props) => {
           <InputAdornment position="end">
             <Icon className={classes.inputAdornmentIcon}>
               lock_outline
-                        </Icon>
+            </Icon>
           </InputAdornment>
         ),
         type: "password",
@@ -105,7 +104,8 @@ const LoginPage = (props) => {
         maxLenght: 10
       },
       isValid: false,
-      isTouched: false
+      isTouched: false,
+      isFocused: false
     }
   });
 
@@ -131,6 +131,17 @@ const LoginPage = (props) => {
     setForm(updatedControls);
     setFormValid(formIsValid);
   }
+
+  const inputFocused = (controlName, state, e) => {
+    const updatedControls = updateObject(form, {
+      [controlName]: updateObject(form[controlName], {
+        isFocused: state
+      })
+    });
+
+    setForm(updatedControls);
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
@@ -149,43 +160,32 @@ const LoginPage = (props) => {
                 className={`${classes.cardHeader} ${classes.textCenter}`}
                 color="primary"
               >
-                <h4 className={classes.cardTitle}>Log in</h4>
-                <div className={classes.socialLine}>
-                  {[
-                    "fab fa-facebook-square",
-                    "fab fa-twitter",
-                    "fab fa-google-plus"
-                  ].map((prop, key) => {
-                    return (
-                      <Button
-                        color="transparent"
-                        justIcon
-                        key={key}
-                        className={classes.customButtonClass}
-                      >
-                        <i className={prop} />
-                      </Button>
-                    );
-                  })}
-                </div>
+                <h4 className={classes.cardTitle}>Inalambria Platform</h4>
               </CardHeader>
               <CardBody>
-
                 {Object.keys(form).map(control => {
-                  const inputProps = { ...form[control].inputProps, onChange: inputChanged.bind(this, control) }
+                  const inputProps = {
+                    ...form[control].inputProps,
+                    onChange: inputChanged.bind(this, control),
+                    onFocus: inputFocused.bind(this, control, true),
+                    onBlur: inputFocused.bind(this, control, false),
+                  }
                   return (
                     <div key={control}>
                       <CustomInput
+                        success={form[control].isValid}
+                        error={!form[control].isValid && form[control].isTouched}
                         labelText={form[control].labelText}
                         formControlProps={form[control].formControlProps}
                         inputProps={inputProps}
+                        focus={form[control].isFocused}
                       />
                     </div>
                   )
                 })}
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
-                <Button type="submit" color="primary" simple size="lg" block disabled={!formValid} >
+                <Button type="submit" color="primary" size="lg" block disabled={!formValid} >
                   Iniciar sesión
                 </Button>
               </CardFooter>

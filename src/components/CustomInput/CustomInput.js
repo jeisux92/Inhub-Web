@@ -26,7 +26,8 @@ export default function CustomInput(props) {
     white,
     inputRootCustomClasses,
     success,
-    helperText
+    helperText,
+    focus
   } = props;
 
   const labelClasses = classNames({
@@ -48,10 +49,13 @@ export default function CustomInput(props) {
   });
   var formControlClasses;
   if (formControlProps !== undefined) {
-    formControlClasses = classNames(
-      formControlProps.className,
-      classes.formControl
-    );
+    formControlClasses = classNames({
+      [formControlProps.className]: true,
+      [classes.formControl]: true,
+      [classes.formControlError]: error,
+      [classes.formControlFocused]: focus,
+      [classes.formControlSuccess]: success && !error,
+    });
   } else {
     formControlClasses = classes.formControl;
   }
@@ -59,6 +63,9 @@ export default function CustomInput(props) {
     [classes.labelRootError]: error,
     [classes.labelRootSuccess]: success && !error
   });
+
+
+
   return (
     <FormControl {...formControlProps} className={formControlClasses}>
       {labelText !== undefined ? (
@@ -99,5 +106,6 @@ CustomInput.propTypes = {
   error: PropTypes.bool,
   success: PropTypes.bool,
   white: PropTypes.bool,
-  helperText: PropTypes.node
+  helperText: PropTypes.node,
+  focus: PropTypes.bool
 };

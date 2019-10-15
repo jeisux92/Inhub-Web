@@ -37,7 +37,7 @@ const customInputStyle = {
   },
   labelRoot: {
     ...defaultFont,
-    color: grayColor[3] + " !important",
+    color: grayColor[3],
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "1.42857",
@@ -57,9 +57,21 @@ const customInputStyle = {
     margin: "0 0 17px 0",
     paddingTop: "27px",
     position: "relative",
-    verticalAlign: "unset",
+    verticalAlign: "unset"
+  },
+  formControlFocused: {
     "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
-      color: grayColor[14]
+      color: primaryColor[0] + " !important"
+    }
+  },
+  formControlError: {
+    "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
+      color: dangerColor[0] + " !important"
+    }
+  },
+  formControlSuccess: {
+    "& svg,& .fab,& .far,& .fal,& .fas,& .material-icons": {
+      color: successColor[0] + " !important"
     }
   },
   whiteUnderline: {

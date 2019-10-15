@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useRef, useEffect } from "react";
+import Particles from "react-particles-js";
+import classes from "./Auth.module.scss"
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -12,15 +13,38 @@ import LoginPage from "views/Pages/LoginPage";
 
 const useStyles = makeStyles(styles);
 
+const particlesOptions = {
+
+  "particles": {
+    "number": {
+      "value": 50
+    },
+    "size": {
+      "value": 3
+    }
+  },
+  "interactivity": {
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      }
+    }
+  }
+}
+
 export default function Pages(props) {
   // styles
   const classes = useStyles();
 
+
+
   return (
     <div>
+      <Particles className={classes.Particles} params={particlesOptions} />
       <div className={classes.wrapper}>
         <div className={classes.fullPage}>
-          <LoginPage {...props}/>
+          <LoginPage {...props} />
           <Footer white />
         </div>
       </div>

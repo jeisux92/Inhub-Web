@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
@@ -29,7 +29,7 @@ var ps;
 // This was necessary so that we could initialize PerfectScrollbar on the links.
 // There might be something with the Hidden component from material-ui, and we didn't have access to
 // the links, and couldn't initialize the plugin.
-class SidebarWrapper extends React.Component {
+class SidebarWrapper extends Component {
   sidebarWrapper = React.createRef();
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -56,7 +56,7 @@ class SidebarWrapper extends React.Component {
   }
 }
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -180,13 +180,13 @@ class Sidebar extends React.Component {
                 typeof prop.icon === "string" ? (
                   <Icon className={itemIcon}>{prop.icon}</Icon>
                 ) : (
-                  <prop.icon className={itemIcon} />
-                )
+                    <prop.icon className={itemIcon} />
+                  )
               ) : (
-                <span className={collapseItemMini}>
-                  {rtlActive ? prop.rtlMini : prop.mini}
-                </span>
-              )}
+                  <span className={collapseItemMini}>
+                    {rtlActive ? prop.rtlMini : prop.mini}
+                  </span>
+                )}
               <ListItemText
                 primary={rtlActive ? prop.rtlName : prop.name}
                 secondary={
@@ -276,13 +276,13 @@ class Sidebar extends React.Component {
               typeof prop.icon === "string" ? (
                 <Icon className={itemIcon}>{prop.icon}</Icon>
               ) : (
-                <prop.icon className={itemIcon} />
-              )
+                  <prop.icon className={itemIcon} />
+                )
             ) : (
-              <span className={collapseItemMini}>
-                {rtlActive ? prop.rtlMini : prop.mini}
-              </span>
-            )}
+                <span className={collapseItemMini}>
+                  {rtlActive ? prop.rtlMini : prop.mini}
+                </span>
+              )}
             <ListItemText
               primary={rtlActive ? prop.rtlName : prop.name}
               disableTypography={true}
@@ -574,7 +574,7 @@ Sidebar.propTypes = {
     "orange",
     "green",
     "blue",
-    "purple",
+    "primary",
     "rose"
   ]),
   logo: PropTypes.string,
