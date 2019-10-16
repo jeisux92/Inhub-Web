@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import Particles from "react-particles-js";
-import classes from "./Auth.module.scss"
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -37,11 +36,9 @@ export default function Pages(props) {
   // styles
   const classes = useStyles();
 
-
-
   return (
     <div>
-      <Particles className={classes.Particles} params={particlesOptions} />
+      <Particles className={classes.particles} params={particlesOptions} />
       <div className={classes.wrapper}>
         <div className={classes.fullPage}>
           <LoginPage {...props} />

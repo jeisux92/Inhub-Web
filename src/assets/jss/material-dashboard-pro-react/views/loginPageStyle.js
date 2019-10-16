@@ -42,9 +42,6 @@ const loginPageStyle = theme => ({
   },
   cardHeader: {
     marginBottom: "20px"
-  },
-  socialLine: {
-    padding: "0.9375rem 0"
   }
 });
 

@@ -18,6 +18,8 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
+import Loading from "components/Loading/Loading";
+import Modal from "components/Modal/Modal";
 import { connect } from "react-redux";
 import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle.js";
 //Router
@@ -111,7 +113,7 @@ const LoginPage = (props) => {
 
   const [formValid, setFormValid] = useState(false);
 
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const inputChanged = (controlName, e) => {
     const updatedControls = updateObject(form, {
       [controlName]: updateObject(form[controlName], {
@@ -144,14 +146,26 @@ const LoginPage = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
+    setIsSubmitting(true);
+
+    setTimeout(() => setIsSubmitting(false), 1000);
+    //props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
   }
 
   if (props.isAuthenticated) {
     return <Redirect to="/admin" />
   }
+
+  let loading = null;
+
+  if (isSubmitting) {
+    loading = (<Modal>
+      <Loading />
+    </Modal>);
+  }
   return (
     <div className={classes.container}>
+      {loading}
       <GridContainer justify="center">
         <GridItem xs={12} sm={6} md={4}>
           <form onSubmit={submitHandler}>
@@ -187,7 +201,7 @@ const LoginPage = (props) => {
               <CardFooter className={classes.justifyContentCenter}>
                 <Button type="submit" color="primary" size="lg" block disabled={!formValid} >
                   Iniciar sesión
-                </Button>
+            </Button>
               </CardFooter>
             </Card>
           </form>

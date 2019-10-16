@@ -11,6 +11,11 @@ const pagesStyle = theme => ({
     position: "relative",
     top: "0"
   },
+  particles: {
+    background: "#213760",
+    position: "fixed",
+    width: "100%"
+  },
   fullPage: {
     padding: "120px 0",
     position: "relative",
