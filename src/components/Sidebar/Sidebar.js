@@ -362,7 +362,7 @@ class Sidebar extends Component {
               onClick={() => this.openCollapse("openAvatar")}
             >
               <ListItemText
-                primary={rtlActive ? "تانيا أندرو" : "Tania Andrew"}
+                primary="Alejandra Villamizar"
                 secondary={
                   <b
                     className={
@@ -388,10 +388,10 @@ class Sidebar extends Component {
                     }
                   >
                     <span className={collapseItemMini}>
-                      {rtlActive ? "مع" : "MP"}
+                      MP
                     </span>
                     <ListItemText
-                      primary={rtlActive ? "ملفي" : "My Profile"}
+                      primary="Mi Perfil"
                       disableTypography={true}
                       className={collapseItemText}
                     />
@@ -405,12 +405,10 @@ class Sidebar extends Component {
                     }
                   >
                     <span className={collapseItemMini}>
-                      {rtlActive ? "هوع" : "EP"}
+                      EP
                     </span>
                     <ListItemText
-                      primary={
-                        rtlActive ? "تعديل الملف الشخصي" : "Edit Profile"
-                      }
+                      primary="Editar Perfil"
                       disableTypography={true}
                       className={collapseItemText}
                     />
@@ -424,10 +422,10 @@ class Sidebar extends Component {
                     }
                   >
                     <span className={collapseItemMini}>
-                      {rtlActive ? "و" : "S"}
+                      C
                     </span>
                     <ListItemText
-                      primary={rtlActive ? "إعدادات" : "Settings"}
+                      primary="Configuración"
                       disableTypography={true}
                       className={collapseItemText}
                     />

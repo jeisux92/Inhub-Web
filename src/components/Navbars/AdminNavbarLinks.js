@@ -78,9 +78,9 @@ export default function HeaderLinks(props) {
           className: classes.top + " " + classes.search
         }}
         inputProps={{
-          placeholder: rtlActive ? "بحث" : "Search",
+          placeholder: "Buscar",
           inputProps: {
-            "aria-label": rtlActive ? "بحث" : "Search",
+            "aria-label": "Buscar",
             className: classes.searchInput
           }
         }}
@@ -139,7 +139,7 @@ export default function HeaderLinks(props) {
                 : classes.links)
             }
           />
-          <span className={classes.notifications}>5</span>
+          <span className={classes.notifications}>2</span>
           <Hidden mdUp implementation="css">
             <span
               onClick={handleClickNotification}
@@ -174,38 +174,14 @@ export default function HeaderLinks(props) {
                       onClick={handleCloseNotification}
                       className={dropdownItem}
                     >
-                      {rtlActive
-                        ? "إجلاء أوزار الأسيوي حين بل, كما"
-                        : "Mike John responded to your email"}
+                      Se han envíado 3 mensajes
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseNotification}
                       className={dropdownItem}
                     >
-                      {rtlActive
-                        ? "شعار إعلان الأرضية قد ذلك"
-                        : "You have 5 new tasks"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={dropdownItem}
-                    >
-                      {rtlActive
-                        ? "ثمّة الخاصّة و على. مع جيما"
-                        : "You're now friend with Andrew"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={dropdownItem}
-                    >
-                      {rtlActive ? "قد علاقة" : "Another Notification"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={handleCloseNotification}
-                      className={dropdownItem}
-                    >
-                      {rtlActive ? "قد فاتّبع" : "Another One"}
-                    </MenuItem>
+                      Se han encolado 130 mensajes
+                    </MenuItem>                    
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -267,20 +243,20 @@ export default function HeaderLinks(props) {
                       onClick={handleCloseProfile}
                       className={dropdownItem}
                     >
-                      {rtlActive ? "الملف الشخصي" : "Profile"}
+                      Perfil
                     </MenuItem>
                     <MenuItem
                       onClick={handleCloseProfile}
                       className={dropdownItem}
                     >
-                      {rtlActive ? "الإعدادات" : "Settings"}
+                      Configuración
                     </MenuItem>
                     <Divider light />
                     <MenuItem
                       onClick={handleCloseProfile}
                       className={dropdownItem}
                     >
-                      {rtlActive ? "الخروج" : "Log out"}
+                      Cerrar sesión
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>

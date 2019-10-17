@@ -7,7 +7,6 @@ import Icon from "@material-ui/core/Icon";
 
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
-// import LockOutline from "@material-ui/icons/LockOutline";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -148,7 +147,11 @@ const LoginPage = (props) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => setIsSubmitting(false), 1000);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      props.history.replace("/admin")
+    }, 1000);
+
     //props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
   }
 

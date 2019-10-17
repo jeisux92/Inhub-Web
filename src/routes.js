@@ -254,21 +254,28 @@ var dashRoutes = [
   //   component: Widgets,
   //   layout: "/admin"
   // },
+  // {
+  //   path: "/charts",
+  //   name: "Charts",
+  //   rtlName: "الرسوم البيانية",
+  //   icon: Timeline,
+  //   component: Charts,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/calendar",
+  //   name: "Calendar",
+  //   rtlName: "التقويم",
+  //   icon: DateRange,
+  //   component: Calendar,
+  //   layout: "/admin"
+  // }
   {
-    path: "/charts",
-    name: "Charts",
-    rtlName: "الرسوم البيانية",
-    icon: Timeline,
-    component: Charts,
-    layout: "/admin"
-  },
-  {
-    path: "/calendar",
-    name: "Calendar",
-    rtlName: "التقويم",
-    icon: DateRange,
-    component: Calendar,
-    layout: "/admin"
-  }
+      path: "/calendar",
+      name: "Campañas",
+      icon: DateRange,
+      component: Calendar,
+      layout: "/admin"
+    }
 ];
 export default dashRoutes;
