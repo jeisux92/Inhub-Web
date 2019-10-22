@@ -26,31 +26,8 @@ import styles from "assets/jss/material-dashboard-pro-react/views/loginPageStyle
 import { Redirect } from "react-router-dom";
 import { auth, authCheckState } from "../../store/actions/auth"
 
+import { validateForm, updateObject } from "../../shared/utility";
 const useStyles = makeStyles(styles);
-
-// actions
-// Input utilities
-//import {  updateObject } from "../../shared/utility";
-
-
-export const validateForm = (value, rules) => {
-  let isValid = true;
-
-  if (rules.maxLenght <= value.length) {
-    isValid = false;
-  }
-
-  if (rules.minLenght >= value.length) {
-    isValid = false;
-  }
-
-
-  return isValid;
-}
-export const updateObject = (oldObject, updateProperties) => ({
-  ...oldObject,
-  ...updateProperties
-})
 
 const LoginPage = (props) => {
   useEffect(() => {

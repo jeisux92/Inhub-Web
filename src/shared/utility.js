@@ -1,11 +1,11 @@
 export const validateForm = (value, rules) => {
     let isValid = true;
 
-    if (rules.maxLenght <= value.lenght) {
+    if (rules.maxLenght <= value.length) {
         isValid = false;
     }
 
-    if (rules.minLenght <= value.lenght) {
+    if (rules.minLenght >= value.length) {
         isValid = false;
     }
 
