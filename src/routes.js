@@ -271,10 +271,10 @@ var dashRoutes = [
   //   layout: "/admin"
   // }
   {
-      path: "/calendar",
+      path: "/dashboard",
       name: "Campañas",
       icon: DateRange,
-      component: Calendar,
+      component: null,
       layout: "/admin"
     }
 ];

@@ -30,6 +30,7 @@ import { validateForm, updateObject } from "../../shared/utility";
 const useStyles = makeStyles(styles);
 
 const LoginPage = (props) => {
+  
   useEffect(() => {
 
     props.onCheckAuth();

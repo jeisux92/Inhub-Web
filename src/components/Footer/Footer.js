@@ -31,31 +31,7 @@ export default function Footer(props) {
   });
   return (
     <footer className={classes.footer}>
-      <div className={container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#home" className={block}>
-                "Home
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#company" className={block}>
-                Company"
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#portfolio" className={block}>
-                Portfolio
-              </a>
-            </ListItem>
-            <ListItem className={classes.inlineBlock}>
-              <a href="#blog" className={block}>
-                Blog
-              </a>
-            </ListItem>
-          </List>
-        </div>
+      <div className={container}>        
         <p className={classes.right}>
           &copy; {1900 + new Date().getYear()}{" "}
           <a
