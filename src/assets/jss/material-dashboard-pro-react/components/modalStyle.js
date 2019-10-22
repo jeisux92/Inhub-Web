@@ -8,7 +8,8 @@ const modalStyle = {
     }, particles: {
         background: "#213760",
         position: "fixed",
-        width: "100%"
+        width: "100vw",
+        height: "100vh",
     },
 }
 

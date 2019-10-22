@@ -30,7 +30,7 @@ import { validateForm, updateObject } from "../../shared/utility";
 const useStyles = makeStyles(styles);
 
 const LoginPage = (props) => {
-  
+
   useEffect(() => {
 
     props.onCheckAuth();
@@ -55,7 +55,6 @@ const LoginPage = (props) => {
       },
       labelText: "Email...",
       rules: {
-        maxLenght: 15,
         minLenght: 10
       },
       isValid: false,
@@ -80,7 +79,7 @@ const LoginPage = (props) => {
         autoComplete: "off",
       },
       rules: {
-        maxLenght: 10
+        minLenght: 10
       },
       isValid: false,
       isTouched: false,

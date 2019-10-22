@@ -14,10 +14,10 @@ const pagesStyle = theme => ({
   particles: {
     background: "#213760",
     position: "fixed",
-    width: "100%"
+    width: "100%",
+    height: "100%"
   },
   fullPage: {
-    padding: "120px 0",
     position: "relative",
     minHeight: "100vh",
     display: "flex!important",
@@ -28,9 +28,7 @@ const pagesStyle = theme => ({
     backgroundSize: "cover",
     backgroundPosition: "center center",
     height: "100%",
-    [theme.breakpoints.down("sm")]: {
-      minHeight: "fit-content!important"
-    },
+   
     "& footer": {
       position: "absolute",
       bottom: "0",
