@@ -31,13 +31,6 @@ const useStyles = makeStyles(styles);
 
 const LoginPage = (props) => {
 
-  useEffect(() => {
-
-    props.onCheckAuth();
-
-    return () => { }
-  }, [])
-
   const classes = useStyles();
 
   const [form, setForm] = useState({
@@ -89,7 +82,6 @@ const LoginPage = (props) => {
 
   const [formValid, setFormValid] = useState(false);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const inputChanged = (controlName, e) => {
     const updatedControls = updateObject(form, {
       [controlName]: updateObject(form[controlName], {
@@ -122,23 +114,13 @@ const LoginPage = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      props.history.replace("/admin")
-    }, 1000);
-
-    //props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
+    props.onAuth(form.user.inputProps.value, form.password.inputProps.value);
   }
 
-  if (props.isAuthenticated) {
-    return <Redirect to="/admin" />
-  }
 
   let loading = null;
 
-  if (isSubmitting) {
+  if (props.isLoading) {
     loading = (<Modal>
       <Loading />
     </Modal>);
@@ -192,12 +174,11 @@ const LoginPage = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.token != null
+  isLoading: state.auth.loading
 })
 
 const mapDispatchToProps = dispatch => ({
-  onAuth: (user, password) => dispatch(auth(user, password)),
-  onCheckAuth: () => dispatch(authCheckState())
+  onAuth: (user, password) => dispatch(auth(user, password))
 })
 
 

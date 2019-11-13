@@ -6,7 +6,7 @@ const backdropStyle = {
         top: 0,
         height: "100%",
         left: 0,
-        zIndex: 1,
+        zIndex: 1033,
         opacity: 0.5,
     }
 }

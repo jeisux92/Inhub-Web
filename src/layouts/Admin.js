@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState, createRef } from "react";
 import cx from "classnames";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
-
+import { connect } from "react-redux";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -17,16 +17,28 @@ import routes from "routes.js";
 
 import styles from "assets/jss/material-dashboard-pro-react/layouts/adminStyle.js";
 
+//Components
+import Modal from "../components/Modal/Modal";
+
+
 var ps;
 
 const useStyles = makeStyles(styles);
+const Dashboard = (props) => {
+  let sessionExpired = null;
 
-export default function Dashboard(props) {
+
+  if (!props.isAuthenticated) {
+    sessionExpired = (<Modal>
+      <h6>Session Expired!</h6>
+    </Modal>);
+  }
+
+
   const { ...rest } = props;
-  // states and functions
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [miniActive, setMiniActive] = React.useState(false);
-  const [logo] = React.useState(require("assets/img/logo.svg"));
+  // states and functions 
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [miniActive, setMiniActive] = useState(false);
   // styles
   const classes = useStyles();
   const mainPanelClasses =
@@ -38,9 +50,9 @@ export default function Dashboard(props) {
         navigator.platform.indexOf("Win") > -1
     });
   // ref for main panel div
-  const mainPanel = React.createRef();
+  const mainPanel = createRef();
   // effect instead of componentDidMount, componentDidUpdate and componentWillUnmount
-  React.useEffect(() => {
+  useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
       ps = new PerfectScrollbar(mainPanel.current, {
         suppressScrollX: true,
@@ -58,7 +70,8 @@ export default function Dashboard(props) {
       window.removeEventListener("resize", resizeFunction);
     };
   });
-  // functions for changeing the states from components
+
+
 
 
   const handleDrawerToggle = () => {
@@ -114,10 +127,11 @@ export default function Dashboard(props) {
 
   return (
     <div className={classes.wrapper}>
+      {sessionExpired}
       <Sidebar
         routes={routes}
         logoText={"Inalambria"}
-        
+
         handleDrawerToggle={handleDrawerToggle}
         open={mobileOpen}
         color="primary"
@@ -156,3 +170,9 @@ export default function Dashboard(props) {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.token != null,
+})
+
+export default connect(mapStateToProps)(withRouter(Dashboard));

@@ -9,7 +9,6 @@ import {
 const initialState = {
     loading: false,
     token: null,
-    userId: null,
     error: null,
     authRedirectionPath: "/"
 }
@@ -18,16 +17,21 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTH_START:
-            return state;
+            return { ...state, loading: true };
         case AUTH_SUCCESS:
             return {
                 ...state,
-                token: action.token
+                token: action.token,
+                loading: false
             };
         case AUTH_FAIL:
             return state;
         case AUTH_LOGOUT:
-            return state;
+            return {
+                ...state,
+                token: null,
+                authRedirectionPath: "/"
+            };
         default:
             return state;
     }
