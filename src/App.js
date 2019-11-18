@@ -16,9 +16,11 @@ const AdminLayout = lazy(() => import('./layouts/Admin'));
 
 
 
-const loading = (<Modal fullWindow>
-    <Loading />
-</Modal>);
+const loading = (
+    <Modal fullWindow>
+        <Loading />
+    </Modal>
+);
 
 
 const App = props => {
@@ -31,10 +33,10 @@ const App = props => {
     let routes = <>
         <Route path="/auth" component={AuthLayout} />
         <Route path="/admin" component={AdminLayout} />
-        {window.location.pathname.indexOf("admin") === -1 ? <Redirect from="/" to="/auth" /> : null}
+        <Redirect from="/" to="/auth" />
     </>;
 
-    if (props.isAuthenticated) {
+    if (props.isAuthenticated || (!props.isAuthenticated && window.location.pathname.indexOf("admin") === 1)) {
         routes = <>
             <Route path="/admin" component={AdminLayout} />
             <Redirect from="/" to="/admin" />
@@ -52,7 +54,8 @@ const App = props => {
 };
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.token != null
+    isAuthenticated: state.auth.token != null,
+    isReload: state.auth.isReload
 });
 
 const mapDispatchToProps = dispatch => ({

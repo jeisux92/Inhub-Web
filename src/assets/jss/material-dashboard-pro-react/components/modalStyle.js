@@ -3,7 +3,7 @@ const modalStyle = {
         position: "fixed",
         top: "50%",
         left: "50%",
-        zIndex: 10,
+        zIndex: 1034,
         transform: "translate(-50%, -50%)",
     }, particles: {
         background: "#213760",
