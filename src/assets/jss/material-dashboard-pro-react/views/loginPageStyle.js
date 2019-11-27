@@ -6,6 +6,9 @@ import {
 } from "assets/jss/material-dashboard-pro-react.js";
 
 const loginPageStyle = theme => ({
+  error: {
+    color: "red"
+  },
   container: {
     ...container,
     zIndex: "4",

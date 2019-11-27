@@ -25,7 +25,11 @@ const reducer = (state = initialState, action) => {
                 loading: false
             };
         case AUTH_FAIL:
-            return state;
+            return {
+                ...state,
+                error: action.error,
+                loading: false
+            };
         case AUTH_LOGOUT:
             return {
                 ...state,

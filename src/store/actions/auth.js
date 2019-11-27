@@ -33,7 +33,6 @@ export const checkAuthTimeOut = expirationTime => {
 export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
-
         const user = {
             email: email,
             password: password
@@ -45,7 +44,7 @@ export const auth = (email, password) => {
             localStorage.setItem("expirationDate", response.data.expires_in);
             dispatch(checkAuthTimeOut(seconds));
             dispatch(authSuccess(response.data.access_token));
-        }).catch(error => dispatch(authFail(error)));
+        }).catch(e => dispatch(authFail(e.message)));
     }
 }
 

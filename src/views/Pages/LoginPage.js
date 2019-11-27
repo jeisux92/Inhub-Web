@@ -119,7 +119,7 @@ const LoginPage = (props) => {
 
 
   let loading = null;
-
+  let error = props.error ? <label className={classes.error}>{props.error}</label> : null;
   if (props.isLoading) {
     loading = (<Modal>
       <Loading />
@@ -159,6 +159,7 @@ const LoginPage = (props) => {
                     </div>
                   )
                 })}
+                {error}
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
                 <Button type="submit" color="primary" size="lg" block disabled={!formValid} >
@@ -174,7 +175,8 @@ const LoginPage = (props) => {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.auth.loading
+  isLoading: state.auth.loading,
+  error: state.auth.error
 })
 
 const mapDispatchToProps = dispatch => ({
