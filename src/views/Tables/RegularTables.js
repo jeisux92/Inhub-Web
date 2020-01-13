@@ -36,8 +36,8 @@ export default function RegularTables() {
     <GridContainer>
       <GridItem xs={12}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <Assignment />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Simple Table</h4>
@@ -62,8 +62,8 @@ export default function RegularTables() {
       </GridItem>
       <GridItem xs={12}>
         <Card plain>
-          <CardHeader color="rose" icon plain>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon plain>
+            <CardIcon color="primary">
               <Assignment />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>
@@ -101,8 +101,8 @@ export default function RegularTables() {
       </GridItem>
       <GridItem xs={12}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <Assignment />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Regular Table with Colors</h4>

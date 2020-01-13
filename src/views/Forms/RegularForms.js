@@ -55,8 +55,8 @@ export default function RegularForms() {
     <GridContainer>
       <GridItem xs={12} sm={12} md={6}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <MailOutline />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Stacked Form</h4>
@@ -105,15 +105,15 @@ export default function RegularForms() {
                   label="Subscribe to newsletter"
                 />
               </div>
-              <Button color="rose">Submit</Button>
+              <Button color="primary">Submit</Button>
             </form>
           </CardBody>
         </Card>
       </GridItem>
       <GridItem xs={12} sm={12} md={6}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <Contacts />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Horizontal Form</h4>
@@ -186,7 +186,7 @@ export default function RegularForms() {
               </GridContainer>
               <GridContainer justify="flex-end">
                 <GridItem xs={12} sm={12} md={9}>
-                  <Button color="rose">Submit</Button>
+                  <Button color="primary">Submit</Button>
                 </GridItem>
               </GridContainer>
             </form>
@@ -195,8 +195,8 @@ export default function RegularForms() {
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
-          <CardHeader color="rose" text>
-            <CardText color="rose">
+          <CardHeader color="primary" text>
+            <CardText color="primary">
               <h4 className={classes.cardTitle}>Form Elements</h4>
             </CardText>
           </CardHeader>

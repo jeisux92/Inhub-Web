@@ -166,8 +166,8 @@ export default function ValidationForms() {
     <GridContainer>
       <GridItem xs={12} sm={12} md={6}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <MailOutline />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Register Forms</h4>
@@ -269,7 +269,7 @@ export default function ValidationForms() {
                 label="Subscribe to newsletter"
               />
               <Button
-                color="rose"
+                color="primary"
                 onClick={registerClick}
                 className={classes.registerButton}
               >
@@ -281,8 +281,8 @@ export default function ValidationForms() {
       </GridItem>
       <GridItem xs={12} sm={12} md={6}>
         <Card>
-          <CardHeader color="rose" icon>
-            <CardIcon color="rose">
+          <CardHeader color="primary" icon>
+            <CardIcon color="primary">
               <Contacts />
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Login Form</h4>
@@ -334,7 +334,7 @@ export default function ValidationForms() {
                 <small>*</small> Required fields
               </div>
               <div className={classes.center}>
-                <Button color="rose" onClick={loginClick}>
+                <Button color="primary" onClick={loginClick}>
                   Login
                 </Button>
               </div>
@@ -344,8 +344,8 @@ export default function ValidationForms() {
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
-          <CardHeader color="rose" text>
-            <CardText color="rose">
+          <CardHeader color="primary" text>
+            <CardText color="primary">
               <h4 className={classes.cardTitle}>Type Validation</h4>
             </CardText>
           </CardHeader>
@@ -579,7 +579,7 @@ export default function ValidationForms() {
             </form>
           </CardBody>
           <CardFooter className={classes.justifyContentCenter}>
-            <Button color="rose" onClick={typeClick}>
+            <Button color="primary" onClick={typeClick}>
               Validate Inputs
             </Button>
           </CardFooter>
@@ -587,8 +587,8 @@ export default function ValidationForms() {
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
-          <CardHeader color="rose" text>
-            <CardText color="rose">
+          <CardHeader color="primary" text>
+            <CardText color="primary">
               <h4 className={classes.cardTitle}>Range Validation</h4>
             </CardText>
           </CardHeader>
@@ -814,7 +814,7 @@ export default function ValidationForms() {
             </form>
           </CardBody>
           <CardFooter className={classes.justifyContentCenter}>
-            <Button color="rose" onClick={rangeClick}>
+            <Button color="primary" onClick={rangeClick}>
               Validate Inputs
             </Button>
           </CardFooter>

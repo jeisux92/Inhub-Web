@@ -12,7 +12,7 @@ const pagesStyle = theme => ({
     top: "0"
   },
   particles: {
-    background: "#213760",
+    background: "#0053bf",
     position: "fixed",
     width: "100%",
     height: "100%"

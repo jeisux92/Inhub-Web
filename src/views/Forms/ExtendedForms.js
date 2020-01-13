@@ -81,8 +81,8 @@ export default function ExtendedForms() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
           <Card>
-            <CardHeader color="rose" icon>
-              <CardIcon color="rose">
+            <CardHeader color="primary" icon>
+              <CardIcon color="primary">
                 <Today />
               </CardIcon>
               <h4 className={classes.cardIconTitle}>Datetime Picker</h4>
@@ -100,8 +100,8 @@ export default function ExtendedForms() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card>
-            <CardHeader color="rose" icon>
-              <CardIcon color="rose">
+            <CardHeader color="primary" icon>
+              <CardIcon color="primary">
                 <LibraryBooks />
               </CardIcon>
               <h4 className={classes.cardIconTitle}>Date Picker</h4>
@@ -120,8 +120,8 @@ export default function ExtendedForms() {
         </GridItem>
         <GridItem xs={12} sm={12} md={4}>
           <Card>
-            <CardHeader color="rose" icon>
-              <CardIcon color="rose">
+            <CardHeader color="primary" icon>
+              <CardIcon color="primary">
                 <AvTimer />
               </CardIcon>
               <h4 className={classes.cardIconTitle}>Time Picker</h4>
@@ -598,7 +598,7 @@ export default function ExtendedForms() {
                   <TagsInput
                     value={tags}
                     onChange={handleTags}
-                    tagProps={{ className: "react-tagsinput-tag info" }}
+                    tagProps={{ className: "react-tagsinput-tag primary" }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
@@ -611,7 +611,7 @@ export default function ExtendedForms() {
                         buttonProps={{
                           round: true,
                           block: true,
-                          color: "info"
+                          color: "primary"
                         }}
                         dropPlacement="bottom"
                         dropdownList={[
@@ -650,7 +650,7 @@ export default function ExtendedForms() {
                                 key={"key"}
                                 data-ref="multi"
                                 innerDropDown
-                                hoverColor="info"
+                                hoverColor="primary"
                                 buttonText="Second Subsubmenu"
                                 buttonProps={{
                                   simple: true
@@ -668,13 +668,13 @@ export default function ExtendedForms() {
                     </GridItem>
                     <GridItem xs={12} sm={6} md={6} lg={6}>
                       <CustomDropdown
-                        hoverColor="info"
+                        hoverColor="primary"
                         buttonText="Dropdown"
                         buttonProps={{
                           round: true,
                           fullWidth: true,
                           style: { marginBottom: "0" },
-                          color: "info"
+                          color: "primary"
                         }}
                         dropdownHeader="Dropdown header"
                         dropdownList={[
@@ -698,13 +698,13 @@ export default function ExtendedForms() {
                       <CustomDropdown
                         dropup
                         buttonText="Dropup"
-                        hoverColor="info"
+                        hoverColor="primary"
                         dropPlacement="top"
                         buttonProps={{
                           round: true,
                           fullWidth: true,
                           style: { marginBottom: "0" },
-                          color: "info"
+                          color: "primary"
                         }}
                         dropdownHeader="Dropdown header"
                         dropdownList={[
@@ -767,11 +767,11 @@ export default function ExtendedForms() {
                   <legend>Regular Image</legend>
                   <ImageUpload
                     addButtonProps={{
-                      color: "rose",
+                      color: "primary",
                       round: true
                     }}
                     changeButtonProps={{
-                      color: "rose",
+                      color: "primary",
                       round: true
                     }}
                     removeButtonProps={{
@@ -785,11 +785,11 @@ export default function ExtendedForms() {
                   <ImageUpload
                     avatar
                     addButtonProps={{
-                      color: "rose",
+                      color: "primary",
                       round: true
                     }}
                     changeButtonProps={{
-                      color: "rose",
+                      color: "primary",
                       round: true
                     }}
                     removeButtonProps={{

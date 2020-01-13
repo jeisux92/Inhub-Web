@@ -152,7 +152,7 @@ const sidebarStyle = theme => ({
     lineHeight: "30px",
     overflow: "hidden",
     "&,&:hover,&:focus": {
-      color: "inherit"
+      color: "#187ef3"
     }
   },
   logoNormalRTL: {
